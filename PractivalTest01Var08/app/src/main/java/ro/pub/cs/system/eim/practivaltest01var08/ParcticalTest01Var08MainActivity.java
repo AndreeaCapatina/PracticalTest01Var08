@@ -197,8 +197,12 @@ public class ParcticalTest01Var08MainActivity extends ActionBarActivity {
             Toast.makeText(this, "The activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
             if (resultCode == -1) {
                 nrSuccess ++;
+                Log.d("[Success]", String.valueOf(nrSuccess));
+
             } else if(resultCode == 0) {
                 nrFails ++;
+                Log.d("[Fails]", String.valueOf(nrFails));
+
             }
         }
         if (alreadyRun == false && nrTotal > Constant.PRAG) {
