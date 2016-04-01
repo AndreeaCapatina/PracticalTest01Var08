@@ -28,6 +28,7 @@ public class ParcticalTest01Var08MainActivity extends ActionBarActivity {
     private int SECONDARY_ACTIVITY_REQUEST_CODE = 0;
     private  boolean serviceStatus = false;
 
+    private boolean alreadyRun = false;
     private MessageBroadcastReceiver messageBroadcastReceiver = null;
     private class MessageBroadcastReceiver extends BroadcastReceiver {
         @Override
@@ -200,6 +201,19 @@ public class ParcticalTest01Var08MainActivity extends ActionBarActivity {
                 nrFails ++;
             }
         }
+        if (alreadyRun == false && nrTotal > Constant.PRAG) {
+            alreadyRun = true;
+            intent = new Intent(getApplicationContext(), PracticalTest01Var08Service.class);
+            //intent.putExtra("", c);
+            startService(intent);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        Intent intent = new Intent(getApplicationContext(), PracticalTest01Var08Service.class);
+        stopService(intent);
+        super.onDestroy();
     }
 
 }
